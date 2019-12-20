@@ -1,4 +1,4 @@
-from __future__ import unicode_literals
+
 
 from django.template.defaultfilters import slugify as django_slugify
 from importlib import import_module

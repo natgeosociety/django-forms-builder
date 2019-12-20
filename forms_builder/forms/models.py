@@ -1,4 +1,4 @@
-from __future__ import unicode_literals
+
 
 from django.contrib.sites.models import Site
 from django.core.exceptions import ValidationError

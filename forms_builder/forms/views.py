@@ -1,4 +1,4 @@
-from __future__ import unicode_literals
+
 
 import json
 
@@ -50,7 +50,7 @@ class FormDetail(TemplateView):
             # Attachments read must occur before model save,
             # or seek() will fail on large uploads.
             attachments = []
-            for f in form_for_form.files.values():
+            for f in list(form_for_form.files.values()):
                 f.seek(0)
                 attachments.append((f.name, f.read()))
             entry = form_for_form.save()
@@ -80,7 +80,7 @@ class FormDetail(TemplateView):
         if not subject:
             subject = "%s - %s" % (form.title, entry.entry_time)
         fields = []
-        for (k, v) in form_for_form.fields.items():
+        for (k, v) in list(form_for_form.fields.items()):
             value = form_for_form.cleaned_data[k]
             if isinstance(value, list):
                 value = ", ".join([i.strip() for i in value])
