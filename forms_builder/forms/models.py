@@ -62,6 +62,9 @@ class AbstractForm(models.Model):
     button_text = models.CharField(_("Button text"), max_length=50,
         default=_("Submit"))
     response = models.TextField(_("Response"), blank=True)
+    endpoint_url = models.CharField(_("Endpoint url"), max_length=200,
+        null=True, blank=True,
+        help_text=_("External URL for handling form submissions rather than the CMS"))
     redirect_url = models.CharField(_("Redirect url"), max_length=200,
         null=True, blank=True,
         help_text=_("An alternate URL to redirect to after form submission"))
